@@ -6,59 +6,9 @@
 - Note: _that php 5.4.45 has reached end of life and is not being security supported further. Because unpatched systems are easy to compromise and compromised systems are often used to attack other systems, you should consider upgrading promptly to a supported version so as not to be a hazard to the Internet._
 ```
 
-_docker with healthcheck_
-
-```bash
-docker run -dti \
-  --health-cmd='curl --fail http://localhost || exit 1' \
-  --health-interval=60s \
-  --health-retries=5 \
-  --health-start-period=20s \
-  --health-timeout=10s \
-  --memory-swap=0 \
-  --memory=128m \
-  --memory-reservation=64m \
-  --name=example.com   \
-  -e HOSTNAME=example.com  \
-  -e TRUSTEDPROXY='172.17.0.0/24' \
-  -e TZ=Europe/Moscow \
-  -e EMAIL=postmaster@example.com \
-  -p 80:80 \
-  -v www:/var/www/html:ro \
-  -v dkim:/etc/mail \
-rootshellcoder/php:5.4.45
-```
-
-_docker compose_
-
-```yaml
-version: '3.8'
-services:
-  webdevops:
-    container_name: example.com
-    environment:
-      TZ: 'Europe/Moscow'
-      HOSTNAME: 'example.com'
-      TRUSTEDPROXY: '172.17.0.0/24'
-      EMAIL: postmaster@example.com
-    volumes:
-      - www:/var/www/html:ro
-      - dkim:/etc/mail
-    image: rootshellcoder/php:5.4.45
-    restart: unless-stopped
-    ports:
-      - 80:80
-    healthcheck:
-      test: curl --fail http://localhost || exit 1
-      interval: 60s
-      retries: 5
-      start_period: 20s
-      timeout: 10s
-```
-
 _dkim_
 
-`docker exec -ti e1f0f7ffcb1d /usr/local/dkim/gen_dkim.sh`
+`docker exec -ti $(docker ps | grep "rootshell-coder/php:5.4.45" | awk {'print $1'}) /usr/local/dkim/gen_dkim.sh`
 
 ```bash
 Publish your public key to your DNS record as a text (TXT) record.

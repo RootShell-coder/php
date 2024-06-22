@@ -18,7 +18,7 @@ if [ -f $KEYDIR/$HOSTNAME.key -a -f $KEYDIR/$HOSTNAME.pub ]; then
     echo "And add SPF TXT record \"v=spf1 ip4:"$MYIP" ~all\""
     echo ""
 else
-    mkdir $KEYDIR/
+    mkdir -p $KEYDIR/
     $OPENSSLDIR/openssl genrsa -out $KEYDIR/$HOSTNAME.key 2048
     $OPENSSLDIR/openssl rsa -in $KEYDIR/$HOSTNAME.key -out $KEYDIR/$HOSTNAME.pub -pubout -outform PEM
 

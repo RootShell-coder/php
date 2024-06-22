@@ -29,10 +29,6 @@ if [ -n "$EMAIL" ]; then
     sed -i 's;webmaster@localhost;'"$EMAIL"';' /etc/apache2/sites-available/000-default.conf
 fi
 
-if [ -n "$CHOWN" && "$CHOWN" = 'true' ]; then
-    chown -R 33:33 /var/www/html/*
-fi
-
 /usr/local/dkim/gen_dkim.sh
 update-exim4.conf
 exec "$@"

@@ -1,0 +1,24 @@
+version: "3.8"
+volumes:
+  www:
+  dkim:
+services:
+  php:
+    image: ghcr.io/rootshell-coder/php:5.4.45
+    environment:
+      TZ: "Europe/Moscow"
+      HOSTNAME: "example.com"
+      TRUSTEDPROXY: "172.17.0.0/24"
+      EMAIL: postmaster@example.com
+    volumes:
+      - www:/var/www/html:ro
+      - dkim:/etc/mail
+    restart: unless-stopped
+    ports:
+      - 80:80
+    healthcheck:
+      test: curl --fail http://localhost || exit 1
+      interval: 60s
+      retries: 5
+      start_period: 20s
+      timeout: 10s

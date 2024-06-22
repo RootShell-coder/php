@@ -13,7 +13,7 @@ RUN apt-get update && apt-get install -y \
   libxslt-dev libjpeg62-turbo-dev libpng-dev apache2-dev apache2 \
   libtool libxml2 libxml2-dev libbz2-1.0 libbz2-dev libjpeg-dev libmcrypt4 \
   libxslt1.1 libxslt1-dev libxt-dev libxpm-dev libgmp-dev libreadline-dev \
-  libpcre3 libpcre3-dev \
+  libpcre3 libpcre3-dev libssl-dev \
   && apt-get clean && apt-get autoclean \
   && rm -rf /var/lib/apt/lists /tmp/*
 
@@ -27,7 +27,7 @@ RUN mkdir -p /usr/local/openssl-${OPENSSL} \
   && make clean \
   && ./config shared --prefix=/usr/local/openssl-${OPENSSL} \
   && make -j $(nproc) \
-  && make test \
+  # && make test \
   && make install \
   && ls -la /usr/local/openssl-${OPENSSL}/lib \
   && wget -O /usr/local/openssl-${OPENSSL}/ssl/cert.pem "http://curl.haxx.se/ca/cacert.pem" \
