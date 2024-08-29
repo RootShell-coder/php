@@ -1,6 +1,6 @@
 #!/bin/bash
 
-PHP=5.4.45
+PHP=7.1.33
 
 if [ -n "$TZ" ]; then
     sed -i 's;\;date.timezone =;date.timezone = '"$TZ"';' /usr/local/php-${PHP}/etc/php.ini

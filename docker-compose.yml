@@ -1,10 +1,10 @@
-version: "3.8"
+---
 volumes:
   www:
   dkim:
 services:
   php:
-    image: ghcr.io/rootshell-coder/php:5.4.45
+    image: ghcr.io/rootshell-coder/php:7.1.33
     environment:
       TZ: "Europe/Moscow"
       HOSTNAME: "example.com"

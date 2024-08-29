@@ -1,9 +1,9 @@
-name: Docker php 5.4.45
+name: Docker php 7.1.33
 on:
   push:
     branches:
     -
-      "5.4.45"
+      "7.1.33"
 
 env:
   REGISTRY: ghcr.io

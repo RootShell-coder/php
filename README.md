@@ -1,14 +1,14 @@
-# PHP 5.4.45 FPM (2014), Apache/2.4.54, Exim 4.94.2, debian11.6 (bullseye)
+# PHP 7.1.33 FPM (2014), Apache/2.4.54, Exim 4.94.2, debian12.6 (bookworm)
 
-[![Docker php 5.4.45](https://github.com/RootShell-coder/php/actions/workflows/docker-image.yml/badge.svg)](https://github.com/RootShell-coder/php/actions/workflows/docker-image.yml)
+[![Docker php 7.1.33](https://github.com/RootShell-coder/php/actions/workflows/docker-image.yml/badge.svg)](https://github.com/RootShell-coder/php/actions/workflows/docker-image.yml)
 
 ```diff
-- Note: _that php 5.4.45 has reached end of life and is not being security supported further. Because unpatched systems are easy to compromise and compromised systems are often used to attack other systems, you should consider upgrading promptly to a supported version so as not to be a hazard to the Internet._
+- Note: _that php 7.1.33 has reached end of life and is not being security supported further. Because unpatched systems are easy to compromise and compromised systems are often used to attack other systems, you should consider upgrading promptly to a supported version so as not to be a hazard to the Internet._
 ```
 
 _dkim_
 
-`docker exec -ti $(docker ps | grep "rootshell-coder/php:5.4.45" | awk {'print $1'}) /usr/local/dkim/gen_dkim.sh`
+`docker exec -ti $(docker ps | grep "rootshell-coder/php:7.1.33" | awk {'print $1'}) /usr/local/dkim/gen_dkim.sh`
 
 ```bash
 Publish your public key to your DNS record as a text (TXT) record.
