@@ -1,8 +1,8 @@
 #!/bin/bash
 
 KEYDIR=/etc/mail
-OPENSSLDIR=/usr/local/openssl-1.0.2u/bin
-CURLDIR=/usr/local/curl-7.82.0/bin
+OPENSSLDIR=/usr/local/openssl-1.1.1u/bin
+CURLDIR=/usr/local/curl-7.74.0/bin
 
 if [ -f $KEYDIR/$HOSTNAME.key -a -f $KEYDIR/$HOSTNAME.pub ]; then
     MYIP=`$CURLDIR/curl https://polmira.ru/ip.php`
