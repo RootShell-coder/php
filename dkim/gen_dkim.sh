@@ -5,7 +5,7 @@ OPENSSLDIR=/usr/local/openssl-1.1.1u/bin
 CURLDIR=/usr/local/curl-7.74.0/bin
 
 if [ -f $KEYDIR/$HOSTNAME.key -a -f $KEYDIR/$HOSTNAME.pub ]; then
-    MYIP=`$CURLDIR/curl https://polmira.ru/ip.php`
+    MYIP=`$CURLDIR/curl -s https://polmira.ru/ip.php`
     DKIM=`cat $KEYDIR/$HOSTNAME.pub | sed -e 's/-----BEGIN PUBLIC KEY-----//' -e 's/-----END PUBLIC KEY-----//' | \
         tr -d '\n' | sed -r 's/(.){197}/"v=DKIM1; g=*; k=rsa; p=&\n"/g' | sed 's/$/"/'`
     echo ""
