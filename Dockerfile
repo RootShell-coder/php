@@ -256,7 +256,6 @@ RUN set -eux; \
   ln -s /usr/lib/x86_64-linux-gnu/libXpm.so /usr/lib/; \
   ln -s /usr/lib/x86_64-linux-gnu/libXpm.a /usr/lib/; \
   export APACHE_RUN_DIR=/var/run/apache2; \
-  echo "<?php\nerror_reporting(E_ERROR | E_WARNING | E_PARSE | E_NOTICE);\necho \$undef;\nphpinfo();\n" > /var/www/html/nfo.php; \
   echo "RemoteIPHeader X-Forwarded-For\nRemoteIPTrustedProxy 127.0.0.1" > /etc/apache2/conf-available/remoteip.conf; \
   ln -sf /dev/stdout /var/log/apache2/access.log; \
   ln -sf /dev/stderr /var/log/apache2/error.log; \
